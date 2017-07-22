@@ -1,0 +1,29 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Nearby Places</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card *ngFor="let place of places | async">
+    <div class="place" (click)="placeSelected(place.id,place.name)">
+      <img [src]="place.photo">
+      <ion-fab right top>
+        <button ion-fab>
+          <ion-icon name="pin"></ion-icon>
+        </button>
+      </ion-fab>
+
+      <ion-item>
+        <ion-icon *ngIf="place.category ==1" name="beer" item-left large></ion-icon>
+        <ion-icon *ngIf="place.category ==2" name="cafe" item-left large></ion-icon>
+        <ion-icon *ngIf="place.category ==3" name="restaurant" item-left large></ion-icon>
+        <h2>{{place.name}}</h2>
+        <p>{{place.address}}</p>
+      </ion-item>
+    </div>
+  </ion-card>
+</ion-content>
